@@ -1,6 +1,15 @@
 # spark-scala-hdfs-docker-example
 Spark with Scala reading/writing files to HDFS with automatic additions of new Spark workers using Docker "scale"
 
+Defaults:
+
+* Workspace dir is at /app
+
+* Jar file is at /app/app.jar.
+
+* Main class is app.Main
+
+
 ## Usage
 
 * Create docker-compose.yml
