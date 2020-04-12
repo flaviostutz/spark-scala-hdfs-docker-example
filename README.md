@@ -9,6 +9,15 @@ Spark with Scala reading/writing files to HDFS with automatic additions of new S
 version: '3.3'
 services:
 
+  #SPARK EXAMPLE APPLICATION
+  spark-example:
+    build: .
+    image: flaviostutz/spark-sample
+    environment:
+      - SPARK_MASTER_NAME=spark-master
+    networks:
+      - hdfs
+
   #SPARK SERVICES
   spark-master:
     image: bde2020/spark-master:2.4.5-hadoop2.7
@@ -58,17 +67,17 @@ services:
       - ./volumes/datanode1:/hadoop/dfs/data
     networks:
       - hdfs
-
-  #TOOLS
-  filebrowser:
-    image: bde2020/hdfs-filebrowser
-    ports:
-      - "8088:8088"
-    environment:
-      - CORE_CONF_fs_defaultFS=hdfs://namenode1:8020
-    networks:
-      - hdfs
 ```
+
+* Copy example application contents from this repo
+
+* Run ```docker-compose up --build -d```
+
+* Run ```docker-compose logs -f spark-example```
+
+  * Check Scala Spark running Hello World application
+
+* Open http://localhost:8080 and look for "Completed Applications"
 
 * Access namenode1 admin at http://localhost:9870/
   * Access filebrowser from menu Utilities->Browser the filesystem
@@ -78,4 +87,3 @@ services:
 * For scaling datanodes/namenodes, copy datanode/namenode service and map a new volume to them
 
 * For scaling Spark workers, use docker-compose scale spark-worker=5, for example
-

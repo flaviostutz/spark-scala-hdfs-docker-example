@@ -7,9 +7,10 @@ ADD /app/project/assembly.sbt /app/project/
 ADD /app/build.sbt /app/
 RUN sbt assembly
 
+RUN sed -i -e 's|/bash|/bash -e|g' /submit.sh
+
 #compile
-ADD /app/src /app/
+ADD /app/src /app/src
 RUN sbt assembly
 
-RUN ls /app/target -al
-
+RUN mv /app/target/scala-2.11/app.jar /app/app.jar

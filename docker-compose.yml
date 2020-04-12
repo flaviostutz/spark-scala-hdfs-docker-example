@@ -2,11 +2,14 @@ version: '3.3'
 
 services:
 
+  #SPARK EXAMPLE APPLICATION
   spark-example:
     build: .
     image: flaviostutz/spark-sample
     environment:
       - SPARK_MASTER_NAME=spark-master
+    networks:
+      - hdfs
 
   #SPARK SERVICES
   spark-master:
