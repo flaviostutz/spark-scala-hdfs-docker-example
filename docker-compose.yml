@@ -2,6 +2,12 @@ version: '3.3'
 
 services:
 
+  spark-example:
+    build: .
+    image: flaviostutz/spark-sample
+    environment:
+      - SPARK_MASTER_NAME=spark-master
+
   #SPARK SERVICES
   spark-master:
     image: bde2020/spark-master:2.4.5-hadoop2.7
@@ -31,6 +37,7 @@ services:
       - INIT_DAEMON_STEP=setup_hdfs
       - HDFS_CONF_dfs_webhdfs_enabled=true
       - HDFS_CONF_dfs_permissions_enabled=false
+      - HDFS_CONF_dfs_disk_balancer_enabled=false
     #   - CORE_CONF_hadoop_http_staticuser_user=root
     #   - CORE_CONF_hadoop_proxyuser_hue_hosts=*
     #   - CORE_CONF_hadoop_proxyuser_hue_groups=*

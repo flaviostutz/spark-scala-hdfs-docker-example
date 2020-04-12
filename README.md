@@ -74,3 +74,8 @@ services:
   * Access filebrowser from menu Utilities->Browser the filesystem
 
 * Access datanode1 admin at http://localhost:9864/
+
+* For scaling datanodes/namenodes, copy datanode/namenode service and map a new volume to them
+
+* For scaling Spark workers, use docker-compose scale spark-worker=5, for example
+
