@@ -10,6 +10,7 @@ ADD /app/src /app/src
 RUN sbt assembly
 
 
+
 FROM flaviostutz/spark-submit-scala:2.4.5.3
 
 ENV HDFS_URL ''
