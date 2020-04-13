@@ -8,6 +8,7 @@ services:
     image: flaviostutz/spark-sample
     environment:
       - SPARK_MASTER_NAME=spark-master
+      - HDFS_URL=hdfs://namenode1:8020
     networks:
       - hdfs
 

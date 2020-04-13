@@ -1,4 +1,4 @@
-FROM flaviostutz/spark-submit-scala:2.4.5.3 AS BUILD
+FROM flaviostutz/spark-submit-scala AS BUILD
 
 #warmup
 ADD /app/project/assembly.sbt /app/project/
@@ -12,5 +12,8 @@ RUN sbt assembly
 
 FROM flaviostutz/spark-submit-scala:2.4.5.3
 
-COPY --from=BUILD /app/target/scala-2.11/app.jar /app/
+ENV HDFS_URL ''
 
+ADD startup.sh /
+ADD /app/people.csv /app/
+COPY --from=BUILD /app/target/scala-2.11/app.jar /app/
