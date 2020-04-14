@@ -1,4 +1,5 @@
 # spark-scala-hdfs-docker-example
+
 Spark with Scala reading/writing files to HDFS with automatic additions of new Spark workers using Docker "scale"
 
 Defaults:
@@ -9,6 +10,8 @@ Defaults:
 
 * Main class is app.Main
 
+
+If you want an example of Spark, Scala, remote Spark Master, but inside Jupyter Notebook environment, check https://github.com/flaviostutz/spark-scala-jupyter/example
 
 ## Usage
 
