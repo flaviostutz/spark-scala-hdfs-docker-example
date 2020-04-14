@@ -50,19 +50,19 @@ services:
     networks:
       - hdfs
 
-  # namenode2:
-  #   image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
-  #   ports:
-  #     - "50071:50070"
-  #     - "9871:9870"
-  #   environment:
-  #     - CLUSTER_NAME=example1
-  #     - HDFS_CONF_dfs_webhdfs_enabled=true
-  #     - HDFS_CONF_dfs_permissions_enabled=false
-  #   volumes:
-  #     - ./volumes/namenode2:/hadoop/dfs/name
-  #   networks:
-  #     - hdfs
+  namenode2:
+    image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
+    ports:
+      - "50071:50070"
+      - "9871:9870"
+    environment:
+      - CLUSTER_NAME=example1
+      - HDFS_CONF_dfs_webhdfs_enabled=true
+      - HDFS_CONF_dfs_permissions_enabled=false
+    volumes:
+      - ./volumes/namenode2:/hadoop/dfs/name
+    networks:
+      - hdfs
 
   datanode1:
     image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
@@ -77,31 +77,31 @@ services:
     networks:
       - hdfs
 
-  # datanode2:
-  #   image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
-  #   environment:
-  #     - CORE_CONF_fs_defaultFS=hdfs://namenode1:8020
-  #     - HDFS_CONF_dfs_webhdfs_enabled=true
-  #   ports:
-  #     - "50076:50075"
-  #     - "9865:9864"
-  #   volumes:
-  #     - ./volumes/datanode2:/hadoop/dfs/data
-  #   networks:
-  #     - hdfs
+  datanode2:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    environment:
+      - CORE_CONF_fs_defaultFS=hdfs://namenode1:8020
+      - HDFS_CONF_dfs_webhdfs_enabled=true
+    ports:
+      - "50076:50075"
+      - "9865:9864"
+    volumes:
+      - ./volumes/datanode2:/hadoop/dfs/data
+    networks:
+      - hdfs
 
-  # datanode3:
-  #   image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
-  #   environment:
-  #     - CORE_CONF_fs_defaultFS=hdfs://namenode1:8020
-  #     - HDFS_CONF_dfs_webhdfs_enabled=true
-  #   ports:
-  #     - "50077:50075"
-  #     - "9866:9864"
-  #   volumes:
-  #     - ./volumes/datanode3:/hadoop/dfs/data
-  #   networks:
-  #     - hdfs
+  datanode3:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    environment:
+      - CORE_CONF_fs_defaultFS=hdfs://namenode1:8020
+      - HDFS_CONF_dfs_webhdfs_enabled=true
+    ports:
+      - "50077:50075"
+      - "9866:9864"
+    volumes:
+      - ./volumes/datanode3:/hadoop/dfs/data
+    networks:
+      - hdfs
 
   #TOOLS
 #   filebrowser:
