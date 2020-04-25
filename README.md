@@ -38,6 +38,7 @@ services:
       - "7077:7077"
     environment:
       - INIT_DAEMON_STEP=setup_spark
+      - SPARK_PUBLIC_DNS=localhost
     networks:
       - spark
 
@@ -45,6 +46,7 @@ services:
     image: bde2020/spark-worker:2.4.5-hadoop2.7
     environment:
       - "SPARK_MASTER=spark://spark-master:7077"
+      - SPARK_PUBLIC_DNS=localhost
     networks:
       - spark
 
